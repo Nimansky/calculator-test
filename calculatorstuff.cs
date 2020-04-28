@@ -19,11 +19,13 @@ namespace calculator_test
 
         public void entersymbol(String input, int pos, Label display)
         {
-            display.Text = "";
             stack.Insert(pos, input);
-            foreach (String s in stack) {
-                display.Text += s;
+            String content = "";
+            foreach (String s in stack)
+            {
+                content += s;
             };
+            display.Text = content;
         }
 
         public void clearsymbols(Label display)
@@ -35,11 +37,12 @@ namespace calculator_test
         public void deletesymbol(int pos, Label display)
         {
             stack.RemoveAt(pos+1);
-            display.Text = "";
+            String content = "";
             foreach (String s in stack)
             {
-                display.Text += s;
+                content += s;
             };
+            display.Text = content;
         }
 
         public List<String> getStack()

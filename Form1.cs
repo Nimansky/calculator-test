@@ -20,6 +20,10 @@ namespace calculator_test
         public Form1()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.FixedHeight, true);
+            this.SetStyle(ControlStyles.FixedWidth, true);
+            panel2.VerticalScroll.Enabled = false;
+            pictureBox1.Parent = panel2;
             label1.Text = "";
         }
 
@@ -71,6 +75,10 @@ namespace calculator_test
                 case 11:
                     cs.entersymbol("*10^(", arraypos, label1);
                     moveCursor(5);
+                    break;
+                case 12:
+                    cs.entersymbol("Ans", arraypos, label1);
+                    moveCursor(3);
                     break;
                 case 14:
                     cs.entersymbol(",", arraypos, label1);
@@ -186,10 +194,10 @@ namespace calculator_test
                     moveCursor(1);
                     break;
                 case 41:
-                    if (pictureBox1.Location.X - 32 > 0) { moveCursor(-1 * cs.getStack()[arraypos-1].Length); }
+                    if (arraypos > 0) { moveCursor(-1 * cs.getStack()[arraypos-1].Length); }
                     break;
                 case 42:
-                    if (pictureBox1.Location.X - 21 <= label1.Width) { moveCursor(1 * cs.getStack()[arraypos].Length); }
+                    if (arraypos < cs.getStack().Count()) { moveCursor(1 * cs.getStack()[arraypos].Length); }
                     break;
                 case 43:
                     cs.entersymbol("X", arraypos, label1);
@@ -226,6 +234,7 @@ namespace calculator_test
                 arraypos -= 1;
             }
             cursorpos += length;
+            panel2.ScrollControlIntoView(pictureBox1);
         }
     }
 }
