@@ -484,12 +484,14 @@
             this.button13.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button13.InputSymbol = null;
+            this.button13.InputSymbol = "calc";
             this.button13.Location = new System.Drawing.Point(335, 506);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(75, 75);
             this.button13.TabIndex = 13;
             this.button13.Text = "=";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.pressButton);
             // 
             // button12
             // 

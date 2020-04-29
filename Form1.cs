@@ -70,6 +70,10 @@ namespace calculator_test
                     cs.clearsymbols(label1);
                     break;
 
+                case "calc":
+                    cs.calculate();
+                    break;
+
                 //input the wanted symbol and move the cursor to the left accordingly
                 default:
                     cs.entersymbol(inputsymbol, arraypos, label1);
@@ -99,6 +103,7 @@ namespace calculator_test
 
         //move the cursor according to the given length of the symbol to be crossed
         private void moveCursor(int length) {
+
             //generate the new coordinates for the cursor
             pictureBox1.Location = new Point(pictureBox1.Location.X + 11*length, pictureBox1.Location.Y);
 
