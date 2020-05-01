@@ -71,7 +71,11 @@ namespace calculator_test
                     break;
 
                 case "calc":
-                    cs.calculate();
+                    if (label1.Text != "")
+                    {
+                        double result = cs.calculate(label1.Text);
+                        MessageBox.Show(result.ToString());
+                    }
                     break;
 
                 //input the wanted symbol and move the cursor to the left accordingly
