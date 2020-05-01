@@ -14,9 +14,24 @@ namespace calculator_test
         //Create a stack of symbols for the calculator display
         private List<String> stack = new List<String>();
 
+        //the last result stored in a variable
+        private Double _ans = Double.NaN;
+
         public double calculate(String input)
         {
-            return Parser.Parse(input).Eval();
+            //create the context and refer to the math functions
+            Methods lib = new Methods(_ans);
+            Context context = new Context(lib);
+
+            //store the result and return it
+            _ans = Parser.Parse(input, context).Eval(context);
+            return _ans;
+        }
+
+        //get the last result
+        public Double Ans()
+        {
+            return _ans;
         }
 
         //Display a given symbol on the calculator and add it to the stack
@@ -58,6 +73,7 @@ namespace calculator_test
             return stack;
         }
 
+        //calculate the factorial of an input number via for-loop
         public double factorial(int input)
         {
             double result = 1;

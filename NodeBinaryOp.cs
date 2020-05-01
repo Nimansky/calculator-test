@@ -13,6 +13,7 @@ namespace calculator_test
         Node _right;
         Func<double, double, double> _op;
 
+        //Binary operations need a lefthand side, a righthand side, and an actual operation to execute
         public NodeBinaryOp(Node left, Node right, Func<double, double, double> op)
         {
             _left = left;
@@ -20,10 +21,11 @@ namespace calculator_test
             _op = op;
         }
 
-        public override double Eval()
+        //return the value by executing the given function, with the numerical values of the right and left sides as input arguments
+        public override double Eval(IContext context)
         {
-            double leftNum = _left.Eval();
-            double rightNum = _right.Eval();
+            double leftNum = _left.Eval(context);
+            double rightNum = _right.Eval(context);
 
             double result = _op(leftNum, rightNum);
             return result;

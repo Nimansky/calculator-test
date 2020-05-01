@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace calculator_test
 {
+
+    //a list of possible tokens for the tokenizer to use
     public enum Token
     {
         EOF,
@@ -19,6 +21,8 @@ namespace calculator_test
         Power,
         Factorial,
         e,
-        pi
+        pi,
+        Identifier,
+        Semicolon
     }
 }

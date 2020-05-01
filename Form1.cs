@@ -70,13 +70,37 @@ namespace calculator_test
                     cs.clearsymbols(label1);
                     break;
 
+                //calculate, but only if expression isn't empty 
                 case "calc":
-                    if (label1.Text != "")
+                    try
                     {
-                        double result = cs.calculate(label1.Text);
-                        MessageBox.Show(result.ToString());
+                        if (label1.Text != "")
+                        {
+                            //also, if Ans is used, check if it has anything stored in it
+                            if (label1.Text.Contains("Ans") && Double.IsNaN(cs.Ans()))
+                            {
+                                throw new Exception("Ans does not currently contain any number");
+                            }
+
+                            //clear symbols and display result in label, also move cursor accordingly
+                            double result = cs.calculate(label1.Text);
+                            moveCursor(-1 * cursorpos);
+                            arraypos = 0;
+                            cursorpos = 0;
+                            cs.clearsymbols(label1);
+                            for (int i = 0; i < result.ToString().Length; i++)
+                            {
+                                cs.entersymbol(result.ToString()[i].ToString(), i, label1);
+                                moveCursor(1);
+                            }
+                        }
+                        break;
                     }
-                    break;
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Invalid input! " + ex.Message);
+                        break;
+                    }
 
                 //input the wanted symbol and move the cursor to the left accordingly
                 default:

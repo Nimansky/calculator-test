@@ -12,12 +12,14 @@ namespace calculator_test
 
         private double _number;
 
+        //a number only needs its own value
         public NodeNumber(double number)
         {
             _number = number;
         }
 
-        public override double Eval()
+        //just return the value
+        public override double Eval(IContext context)
         {
             return _number;
         }

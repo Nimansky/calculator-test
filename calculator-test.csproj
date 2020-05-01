@@ -51,16 +51,21 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="calculatorstuff.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IContext.cs" />
+    <Compile Include="Methods.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="NodeBinaryOp.cs" />
+    <Compile Include="NodeFunction.cs" />
     <Compile Include="NodeNumber.cs" />
     <Compile Include="NodeUnaryOp.cs" />
+    <Compile Include="NodeVariable.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
